@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SpaceNet - Social Space Community</title>
+    <style>
+      :root {
+        --primary-bg: #0a0e24;
+        --secondary-bg: #1a1f4b;
+        --accent: #6c63ff;
+        --text-primary: #e0e0e0;
+        --text-secondary: #8c8ca2;
+        --hover-effect: rgba(108, 99, 255, 0.1);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Space Grotesk", sans-serif;
+      }
+
+      body {
+        background-image: url("Screenshot\ 2025-02-15\ 130121.png");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center;
+        background-size: cover;
+        color: var(--text-primary);
+      }
+
+      .header {
+        background: var(--secondary-bg);
+        padding: 1rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      }
+
+      .control-panel {
+        position: fixed;
+        top: 3px;
+        left: 38%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 10px;
+        padding: 15px;
+        
+        border-radius: 20px;
+        
+        z-index: 200;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+      }
+
+      .control-btn {
+        padding: 10px 20px;
+        background: rgba(124, 77, 255, 0.3);
+        border: 1px solid #7c4dff;
+        color: white;
+        border-radius: 15px;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+
+      .control-btn:hover {
+        background: rgba(124, 77, 255, 0.6);
+        transform: scale(1.1);
+      }
+
+      .main-container {
+        display: grid;
+        grid-template-columns: 1fr 2.5fr 1fr;
+        gap: 2rem;
+        padding: 2rem;
+        max-width: 1600px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 1;
+        margin-top: 80px;
+      }
+
+      /* Keep other existing styles below */
+      .logo {
+        font-size: 2rem;
+        font-weight: bold;
+        color: var(--accent);
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .nav-container {
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+      }
+
+      .search-bar {
+        padding: 0.8rem 1.5rem;
+        border-radius: 25px;
+        border: none;
+        background: var(--primary-bg);
+        color: var(--text-primary);
+        width: 400px;
+      }
+
+      .user-profile {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        cursor: pointer;
+        position: relative;
+      }
+
+      .profile-pic {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: 2px solid var(--accent);
+      }
+
+      .sidebar-left,
+      .sidebar-right {
+        background: var(--secondary-bg);
+        border-radius: 15px;
+        padding: 1.5rem;
+        height: fit-content;
+      }
+
+      .create-post {
+        background: var(--secondary-bg);
+        border-radius: 15px;
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+      }
+
+      .post-input {
+        width: 100%;
+        background: var(--primary-bg);
+        border: none;
+        border-radius: 15px;
+        padding: 1.5rem;
+        color: var(--text-primary);
+        font-size: 1rem;
+        resize: vertical;
+        min-height: 100px;
+      }
+
+      .post {
+        background: var(--secondary-bg);
+        border-radius: 15px;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        transition: transform 0.2s;
+      }
+
+      .post:hover {
+        transform: translateY(-3px);
+      }
+
+      .post-header {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1rem;
+      }
+
+      .post-author {
+        font-weight: bold;
+      }
+
+      .post-time {
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+      }
+
+      .post-actions {
+        display: flex;
+        gap: 2rem;
+        margin-top: 1.5rem;
+        padding-top: 1rem;
+        border-top: 1px solid var(--primary-bg);
+      }
+
+      .action-btn {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: none;
+        border: none;
+        color: var(--text-secondary);
+        cursor: pointer;
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
+        transition: all 0.2s;
+      }
+
+      .action-btn:hover {
+        background: var(--hover-effect);
+        color: var(--accent);
+      }
+
+      .trending-topics {
+        list-style: none;
+      }
+
+      .trending-item {
+        padding: 1rem;
+        border-radius: 8px;
+        margin-bottom: 0.5rem;
+        cursor: pointer;
+        transition: background 0.2s;
+      }
+
+      .trending-item:hover {
+        background: var(--hover-effect);
+      }
+
+      .friends-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .friend-item {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 0.5rem;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+
+      .friend-item:hover {
+        background: var(--hover-effect);
+      }
+
+      @media (max-width: 1200px) {
+        .main-container {
+          grid-template-columns: 1fr;
+        }
+
+        .sidebar-left,
+        .sidebar-right {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <div class="logo">
+        <span>🚀</span>
+        SpaceNet
+      </div>
+      <div class="nav-container">
+        <input
+          type="text"
+          class="search-bar"
+          placeholder="Search the galaxy..."
+        />
+        <div class="user-profile">
+          <img
+            src="WhatsApp Image 2025-02-15 at 11.05.47.jpeg"
+            class="profile-pic"
+            alt="Profile"
+          />
+          <div class="profile-menu">
+            <span>John Cosmos</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Control Panel Moved Here -->
+    <div class="control-panel">
+      <button class="control-btn" id="homeBtn" onclick="nava()">Home</button>
+      <button class="control-btn" id="communityBtn" onclick="navb()">Community</button>
+      <button class="control-btn" id="launchesBtn" onclick="navc()">Launches</button>
+      <button class="control-btn" id="connectBtn" onclick="navd()">Connect</button>
+      <button class="control-btn" id="aboutusBtn" onclick="nave()">Mission</button>
+    </div>
+
+    <div class="main-container">
+      <aside class="sidebar-left">
+        <h3>Shortcuts</h3>
+        <ul class="trending-topics">
+          <li class="trending-item">#BlackHoleDiscovery</li>
+          <li class="trending-item">#MarsColonyUpdate</li>
+          <li class="trending-item">#ExoplanetNews</li>
+          <li class="trending-item">#SpaceXLaunch</li>
+        </ul>
+      </aside>
+
+      <main>
+        <div class="create-post">
+          <textarea
+            class="post-input"
+            placeholder="What's on your mind, astronaut?"
+          ></textarea>
+          <div class="post-actions">
+            <button class="action-btn" onclick="createPost()">
+              🚀 Launch Post
+            </button>
+            <button class="action-btn">📷 Photo</button>
+            <button class="action-btn">🎥 Live Video</button>
+          </div>
+        </div>
+
+        <div class="post">
+          <div class="post-header">
+            <img
+              src="Screenshot 2025-02-15 130121.png"
+              class="profile-pic"
+              alt="Author"
+            />
+            <div>
+              <div class="post-author">SpaceExplorer42</div>
+              <div class="post-time">2 hours ago · 🌌 r/SpaceScience</div>
+            </div>
+          </div>
+          <div class="post-content">
+            <p>
+              Just witnessed the most spectacular meteor shower from the
+              observatory! 🌠 Anyone else catch the Tau Herculids last night?
+            </p>
+          </div>
+          <div class="post-actions">
+            <button class="action-btn" onclick="reactPost(this)">
+              👍 1.2K
+            </button>
+            <button class="action-btn" onclick="reactPost(this)">💬 284</button>
+            <button class="action-btn" onclick="reactPost(this)">
+              🔄 Share
+            </button>
+          </div>
+        </div>
+      </main>
+
+      <aside class="sidebar-right">
+        <h3>Active Astronauts</h3>
+        <div class="friends-list">
+          <div class="friend-item">
+            <img
+              src="ufo-alien-spaceship-icon-cartoon-animated-illustration-vector-removebg-preview.png"
+              class="profile-pic"
+              alt="Friend"
+            />
+            <span>GalaxyHunter</span>
+          </div>
+          <div class="friend-item">
+            <img
+              src="Aliens-removebg-preview.png"
+              class="profile-pic"
+              alt="Friend"
+            />
+            <span>OrbitMaster</span>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <script>
+      function createPost() {
+        const postContent = document.querySelector(".post-input").value;
+        if (postContent.trim()) {
+          const newPost = document.createElement("div");
+          newPost.className = "post";
+          newPost.innerHTML = `
+                    <div class="post-header">
+                        <img src="WhatsApp Image 2025-02-15 at 11.05.47.jpeg" class="profile-pic" alt="Author">
+                        <div>
+                            <div class="post-author">John Cosmos</div>
+                            <div class="post-time">Just now · 🌍 Personal Post</div>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <p>${postContent}</p>
+                    </div>
+                    <div class="post-actions">
+                        <button class="action-btn" onclick="reactPost(this)">👍 0</button>
+                        <button class="action-btn" onclick="reactPost(this)">💬 0</button>
+                        <button class="action-btn" onclick="reactPost(this)">🔄 Share</button>
+                    </div>
+                `;
+          document
+            .querySelector("main")
+            .insertBefore(newPost, document.querySelector(".post"));
+          document.querySelector(".post-input").value = "";
+        }
+      }
+
+      function nava() {
+        window.location.href="index7.html";
+      }
+      function navb() {
+        window.location.href="index2.html";
+      }
+      function navc() {
+        window.location.href="index6.html";
+      }
+      function navd() {
+        window.location.href="indx1.html";
+      }
+      function nave() {
+        window.location.href="index5.html";
+      }
+
+      function reactPost(button) {
+        const countSpan = button.querySelector("span") || button;
+        let count = parseInt(countSpan.textContent.match(/\d+/)) || 0;
+        count++;
+        button.innerHTML = button.innerHTML.replace(/\d+/, count);
+        button.style.animation = "pop 0.3s ease";
+        setTimeout(() => (button.style.animation = ""), 300);
+      }
+
+      // Dynamic theme switching
+      const root = document.documentElement;
+      const themes = {
+        space: {
+          "--primary-bg": "#0A0E24",
+          "--secondary-bg": "#1A1F4B",
+          "--accent": "#6C63FF",
+        },
+        dark: {
+          "--primary-bg": "#18191A",
+          "--secondary-bg": "#242526",
+          "--accent": "#2374E1",
+        },
+      };
+
+      function changeTheme(themeName) {
+        const theme = themes[themeName];
+        Object.keys(theme).forEach((key) => {
+          root.style.setProperty(key, theme[key]);
+        });
+      }
+    </script>
+  </body>
+</html>

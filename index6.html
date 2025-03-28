@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Nebula Vibe - ISRO Missions</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: "Arial", sans-serif;
+        background: #0a1931;
+        color: #fff;
+      }
+      .header {
+        padding: 20px;
+        background: rgba(0, 0, 0, 0.7);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .control-panel {
+        position: fixed;
+        top: 6px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 10px;
+        padding: 15px;
+        
+        border-radius: 20px;
+        
+        z-index: 100;
+      }
+
+      .control-btn {
+        padding: 10px 20px;
+        background: rgba(124, 77, 255, 0.3);
+        border: 1px solid #7c4dff;
+        color: white;
+        border-radius: 15px;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+
+      .control-btn:hover {
+        background: rgba(124, 77, 255, 0.6);
+        transform: scale(1.1);
+      }
+
+      .logo {
+        font-size: 2em;
+        color: #7c4dff;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+      }
+
+      .nav-links a {
+        color: #fff;
+        text-decoration: none;
+        margin: 0 15px;
+        transition: color 0.3s;
+      }
+
+      .mission-section {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-size: cover;
+        background-position: center;
+      }
+
+      .mission-content {
+        text-align: center;
+        background: rgba(0, 0, 0, 0.5);
+        padding: 30px;
+        border-radius: 10px;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 10px 30px;
+        background: #4e8dff;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+
+    <div class="space" id="space"></div>
+    <div class="control-panel">
+      <button class="control-btn" id="homeBtn" onclick="navA()">Home</button>
+      <button class="control-btn" id="communityBtn" onclick="navB()">Community</button>
+      <button class="control-btn" id="launchesBtn" onclick="navC()">Launches</button>
+      <button class="control-btn" id="connectBtn" onclick="navD()">Connect</button>
+      <button class="control-btn" id="aboutusBtn" onclick="navE()">Mission</button>
+    </div>
+    <header class="header">
+      <div class="logo" align="center">Nebula Vibe</div>
+      </nav>
+    </header>
+
+    <section
+      class="mission-section"
+      style="background-image: url(Aditya_l1-bg.jpeg)"
+    >
+      <div class="mission-content">
+        <h2>Aditya-l1 Mission</h2>
+        <p>
+          The Aditya-L1 mission, launched on September 2, 2023, is India's first
+          solar mission designed to study the solar corona and chromosphere.
+        </p>
+        <a href="https://www.isro.gov.in/Aditya_L1.html" class="btn"
+          >Learn More</a
+        >
+      </div>
+    </section>
+
+    <section
+      class="mission-section"
+      style="background-image: url('Chandrayaan-3-bg.jpeg')"
+    >
+      <div class="mission-content">
+        <h2>Chandrayaan-3 mission</h2>
+        <p>
+          Chandrayaan-3 successfully landed on the Moon on August 23, 2023,
+          enhancing India's lunar exploration capabilities.
+        </p>
+        <a href="https://www.isro.gov.in/Chandrayaan3_Details.html" class="btn"
+          >Mission Details</a
+        >
+      </div>
+    </section>
+
+    <section
+      class="mission-section"
+      style="background-image: url(isropslv.jpeg)"
+    >
+      <div class="mission-content">
+        <h2>PSLV-C37</h2>
+        <p>
+          PSLV-C37 set a world record by launching 104 satellites in a single
+          mission on February 15, 2017.
+        </p>
+        <a href="https://www.isro.gov.in/mission_PSLV_C37.html?timeline=timeline" class="btn">Updates</a>
+      </div>
+    </section>
+    <section
+      class="mission-section"
+      style="background-image: url('Mars\ Orbiter\ Mission\ \(Mangalyaan\)-bg.jpeg')"
+    >
+      <div class="mission-content">
+        <h2>Mars Orbiter Mission (Mangalyaan)</h2>
+        <p>
+          Mangalyaan, launched in 2013, made India the first country to reach Mars orbit on its first attempt.
+        </p>
+        <a href="https://www.isro.gov.in/MarsOrbiterMissionSpacecraft.html" class="btn"
+          >Mission Details</a
+        >
+      </div>
+    </section>
+    <section
+      class="mission-section"
+      style="background-image: url(Aryabhata-bg.jpeg)"
+    >
+      <div class="mission-content">
+        <h2>Aryabhata</h2>
+        <p>
+          Aryabhata, launched on April 19, 1975, was India's first satellite, symbolizing a significant milestone in the nation's space exploration journey.
+        </p>
+        <a href="https://www.isro.gov.in/aryabhata_1.html" class="btn"
+          >Mission Details</a
+        >
+      </div>
+    </section>
+
+    <footer style="text-align: center; padding: 20px; background: #000">
+      <p>© 2023 Nebula Vibe | ISRO Information Portal</p>
+    </footer>
+    <script>
+        function navA() {
+        window.location.href="index7.html";
+      }
+      function navB() {
+        window.location.href="index2.html";
+      }
+      function navC() {
+        window.location.href="index6.html";
+      }
+      function navD() {
+        window.location.href="indx1.html";
+      }
+      function navE() {
+        window.location.href="index5.html";
+      }
+    </script>
+  </body>
+</html>

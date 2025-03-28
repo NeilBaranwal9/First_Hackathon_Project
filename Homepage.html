@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cosmic Explorer | Space Exploration</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Arial", sans-serif;
+      }
+
+      body {
+        background-color: #0a0a2e;
+        color: #ffffff;
+        line-height: 1.6;
+      }
+
+      /* Header Styles */
+      header {
+        padding: 1rem;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        background: rgba(10, 10, 46, 0.9);
+        backdrop-filter: blur(10px);
+      }
+
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .logo {
+        font-size: 2rem;
+        color: #4d4dff;
+        text-decoration: none;
+        font-family: "Orbitron", sans-serif;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+      }
+
+      .nav-links a {
+        color: #fff;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .nav-links a:hover {
+        color: #4d4dff;
+      }
+
+      /* Hero Section */
+      .hero {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        background: linear-gradient(
+            rgba(10, 10, 46, 0.7),
+            rgba(10, 10, 46, 0.7)
+          ),
+          url("https://images.unsplash.com/photo-1465101162946-4377e57745c3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80");
+        background-size: cover;
+        background-position: center;
+      }
+
+      .hero-content {
+        max-width: 800px;
+        padding: 2rem;
+      }
+
+      .hero h1 {
+        font-size: 4rem;
+        margin-bottom: 1rem;
+        font-family: "Orbitron", sans-serif;
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+      }
+
+      .cta-button {
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+        background-color: #4d4dff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: transform 0.3s;
+      }
+
+      .cta-button:hover {
+        transform: scale(1.05);
+      }
+
+      /* Features Section */
+      .features {
+        padding: 5rem 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+      }
+
+      .feature-card {
+        background: rgba(255, 255, 255, 0.05);
+        padding: 2rem;
+        border-radius: 10px;
+        transition: transform 0.3s;
+      }
+
+      .feature-card:hover {
+        transform: translateY(-10px);
+      }
+
+      /* Newsletter Section */
+      .newsletter {
+        padding: 4rem 2rem;
+        text-align: center;
+        background: rgba(255, 255, 255, 0.05);
+      }
+
+      .newsletter-form {
+        margin-top: 2rem;
+      }
+
+      .newsletter-input {
+        padding: 1rem;
+        width: 300px;
+        border: none;
+        border-radius: 5px;
+        margin-right: 1rem;
+      }
+
+      /* Footer */
+      footer {
+        padding: 3rem 2rem;
+        text-align: center;
+        background: #000033;
+      }
+
+      .social-links {
+        margin-top: 2rem;
+      }
+
+      .social-links a {
+        color: #fff;
+        margin: 0 1rem;
+        font-size: 1.5rem;
+        transition: color 0.3s;
+      }
+
+      .social-links a:hover {
+        color: #4d4dff;
+      }
+
+      /* Animations */
+      @keyframes float {
+        0% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+        100% {
+          transform: translateY(0px);
+        }
+      }
+
+      .floating {
+        animation: float 3s ease-in-out infinite;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="#" class="logo">Nebula vibe</a>
+        <div class="nav-links">
+          <a href="index7.html">Home</a>
+          <a href="index2.html">Community</a>
+          <a href="index6.html">Launches</a>
+          <a href="indx1.html">Connect</a>
+          <a href="index5.html">Mission</a>
+        </div>
+      </nav>
+    </header>
+
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <h1>Explore the Universe</h1>
+        <p>
+          Discover the wonders of space through our interactive experiences and
+          educational resources.
+        </p>
+        <button class="cta-button" onclick="nav()">Start Your Journey</button>
+      </div>
+    </section>
+
+    <section class="features" id="missions">
+      <h2>Featured Missions</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <h3>Mars Exploration</h3>
+          <p>
+            Learn about our ongoing missions to the Red Planet and future
+            colonization plans.
+          </p>
+        </div>
+        <div class="feature-card">
+          <h3>Deep Space</h3>
+          <p>Explore the farthest reaches of our solar system and beyond.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Space Technology</h3>
+          <p>
+            Discover the latest advancements in space exploration technology.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="newsletter" id="contact">
+      <h2>Stay Updated with Space News</h2>
+      <form class="newsletter-form" id="newsletterForm">
+        <input
+          type="email"
+          class="newsletter-input"
+          placeholder="Enter your email"
+          required
+        />
+        <button type="submit" class="cta-button">Subscribe</button>
+      </form>
+    </section>
+
+    <footer>
+      <div class="social-links">
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+      </div>
+      <p>&copy; 2025 Nebula vibe. All rights reserved.</p>
+    </footer>
+
+    <script>
+      // Smooth scrolling for navigation links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          document.querySelector(this.getAttribute("href")).scrollIntoView({
+            behavior: "smooth",
+          });
+        });
+      });
+
+      function nav() {
+        window.location.href="index3.html";
+      }
+
+      // Newsletter form submission
+      document
+        .getElementById("newsletterForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          const email = document.querySelector(".newsletter-input").value;
+          alert(`Thanks for subscribing, ${email}!`);
+          this.reset();
+        });
+
+      // Parallax effect for hero section
+      window.addEventListener("scroll", function () {
+        const scrolled = window.pageYOffset;
+        document.querySelector(".hero").style.backgroundPositionY =
+          -(scrolled * 0.5) + "px";
+      });
+
+      // Add floating animation to feature cards on hover
+      document.querySelectorAll(".feature-card").forEach((card) => {
+        card.addEventListener("mouseenter", function () {
+          this.classList.add("floating");
+        });
+
+        card.addEventListener("mouseleave", function () {
+          this.classList.remove("floating");
+        });
+      });
+    </script>
+  </body>
+</html>

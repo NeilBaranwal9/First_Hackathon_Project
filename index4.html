@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stellar Signup - Cosmic Account Creation</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <style>
+      :root {
+        --space-black: #0a0a23;
+        --star-white: #f8f9fa;
+        --nebula-purple: #9d4edd;
+        --planet-blue: #4361ee;
+        --comet-teal: #4cc9f0;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      /* Space Background Animation */
+.planet-container {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: -2;
+}
+
+.planet {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  animation: orbit 10s linear infinite;
+}
+
+.planet:nth-child(2) {
+  width: 150px;
+  height: 150px;
+  animation-duration: 15s;
+}
+
+.planet:nth-child(3) {
+  width: 300px;
+  height: 300px;
+  animation-duration: 20s;
+}
+
+/* Orbit Animation */
+@keyframes orbit {
+  0% {
+    transform: rotate(0deg) translateX(200px) rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg) translateX(200px) rotate(-360deg);
+  }
+}
+
+      .stars {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: transparent;
+      }
+
+      .star {
+        position: absolute;
+        background: white;
+        border-radius: 50%;
+        animation: twinkle 1.5s infinite;
+      }
+
+      @keyframes twinkle {
+        0%,
+        100% {
+          opacity: 0;
+        }
+        50% {
+          opacity: 1;
+        }
+      }
+
+
+      body {
+        background: linear-gradient(45deg, var(--space-black), #1a1a40);
+        color: var(--star-white);
+        font-family: "Orbitron", sans-serif;
+        min-height: 100vh;
+        padding: 2rem;
+      }
+
+      .space-container {
+        max-width: 800px;
+        margin: 0 auto;
+        background: rgba(10, 10, 35, 0.9);
+        padding: 2rem;
+        border-radius: 15px;
+        border: 1px solid var(--nebula-purple);
+        box-shadow: 0 0 20px rgba(157, 78, 221, 0.3);
+      }
+
+      .form-title {
+        text-align: center;
+        margin-bottom: 2rem;
+        font-size: 2.5rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        text-shadow: 0 0 10px var(--comet-teal);
+      }
+
+      .form-group {
+        margin-bottom: 1.5rem;
+        position: relative;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: var(--comet-teal);
+      }
+
+      input,
+      select,
+      textarea {
+        width: 100%;
+        padding: 0.8rem;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid var(--planet-blue);
+        color: var(--star-white);
+        border-radius: 5px;
+        transition: all 0.3s ease;
+      }
+
+      input:focus,
+      select:focus,
+      textarea:focus {
+        outline: none;
+        border-color: var(--nebula-purple);
+        box-shadow: 0 0 10px rgba(157, 78, 221, 0.5);
+      }
+
+      .password-strength {
+        height: 5px;
+        margin-top: 0.5rem;
+        border-radius: 2px;
+        transition: all 0.3s ease;
+      }
+
+      .profile-preview {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        border: 2px solid var(--nebula-purple);
+        margin: 1rem 0;
+        object-fit: cover;
+      }
+
+      .accessibility-section {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+        background-color: #0a0a23;
+      }
+
+      #highContrastToggle {
+        padding: 0.25rem 0.75rem; /* Reduced padding */
+        font-size: 0.75rem; /* Smaller text */
+        margin-top: 1.6rem;
+        height: 45px; /* Fixed height */
+        line-height: 1; /* Better vertical alignment */
+        background: var(--nebula-purple); /* Maintain space theme color */
+        color: var(--star-white);
+        border: 1px solid var(--planet-blue);
+        border-radius: 4px;
+        transition: all 0.2s ease;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+      /* Target the select element within the accessibility section */
+      .accessibility-section select {
+        background: var(--nebula-purple);
+        border-color: var(--nebula-purple);
+        color: var(--star-white);
+      }
+
+      .accessibility-section select option {
+        background: var(--space-black);
+        color: var(--star-white);
+      }
+
+      .comet {
+        position: absolute;
+        width: 80px;
+        height: 2px;
+        background: linear-gradient(
+          90deg,
+          rgba(255, 255, 255, 0) 0%,
+          rgba(255, 255, 255, 1) 100%
+        );
+        transform-origin: left center;
+        animation: comet 3s linear infinite;
+      }
+
+      .comet::after {
+        content: "";
+        position: absolute;
+        right: 0;
+        top: -2px;
+        width: 8px;
+        height: 8px;
+        background: white;
+        border-radius: 50%;
+        box-shadow: 0 0 10px white;
+      }
+
+      @keyframes comet {
+        0% {
+          transform: translate(-100vw, -100vh) rotate(45deg);
+          opacity: 0;
+        }
+        20% {
+          opacity: 1;
+        }
+        100% {
+          transform: translate(100vw, 100vh) rotate(45deg);
+          opacity: 0;
+        }
+      }
+
+
+      .accessibility-section select:focus {
+        box-shadow: 0 0 10px rgba(157, 78, 221, 0.5);
+      }
+      .terms-group {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem; /* Reduced gap */
+        margin: 1rem 0;
+      }
+
+      .terms-group input[type="checkbox"] {
+        margin: 0; /* Remove default margins */
+        width: 18px;
+        height: 18px;
+      }
+
+      .terms-group label {
+        margin: 0;
+        font-size: 0.9rem;
+      }
+
+      #highContrastToggle:hover {
+        transform: scale(1.02);
+        box-shadow: 0 0 8px var(--nebula-purple);
+        background: var(--planet-blue);
+      }
+
+      .terms-group {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin: 1.5rem 0;
+      }
+
+      .star-field {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: -1;
+      }
+
+      
+      /* Add more space-themed animations and styles as needed */
+    </style>
+  </head>
+  <body>
+
+    <div id="stars"></div>
+
+    <div id="comet"></div>
+   
+    <div class="space-container">
+      <h1 class="form-title">
+        <i class="fas fa-rocket"></i> Create Cosmic Account
+      </h1>
+
+      <form id="signupForm" enctype="multipart/form-data">
+        <!-- User Information Section -->
+
+        <legend>Space Traveler Credentials:</legend>
+        <div class="form-group">
+          <label for="username">Astronaut Handle</label>
+          <input
+            type="text"
+            id="username"
+            required
+            placeholder="Enter your cosmic alias"
+          />
+        </div>
+
+        <div class="planet-container">
+            <img src="png-transparent-round-red-and-yellow-moon-planet-the-transit-of-venus-planet-mars-mercury-planets-miscellaneous-sphere-venus-thumbnail-removebg-preview.png" class="planet" style="top: 20%; left: 50%;">
+            <img src="pexels-pixabay-87651-removebg-preview.png" class="planet" style="top: 50%; left: 20%;">
+            <img src="745ba7be-4579-40d3-81f9-9316bff7b0a2-removebg-preview.png" class="planet" style="top: 80%; left: 70%;">
+        </div>
+
+          
+
+        <!-- Add more form groups for each required field -->
+
+        <!-- Include other sections similarly -->
+
+        <!-- Profile Picture Upload -->
+        <div class="form-group">
+          <label for="avatar">Upload Space Badge</label>
+          <input type="file" id="avatar" accept="image/*" />
+          <img
+            src="WhatsApp Image 2025-02-15 at 15.19.56.jpeg"
+            alt="Profile Preview"
+            class="profile-preview"
+            id="profilePreview"
+          />
+        </div>
+
+        <!-- Password Section -->
+        <div class="form-group">
+          <label for="password">Launch Code</label>
+          <input type="password" id="password" required />
+          <div class="password-strength" id="passwordStrength"></div>
+        </div>
+
+        <!-- Accessibility Section -->
+        <div class="accessibility-section">
+          <div class="form-group">
+            <label for="language">Spaceship Language</label>
+            <select id="language">
+              <option value="en">English</option>
+              <option value="es">Español</option>
+              <option value="fr">Français</option>
+            </select>
+          </div>
+          <button type="button" id="highContrastToggle">
+            High Contrast Mode
+          </button>
+        </div>
+
+        <!-- Terms and Submit -->
+        <div class="terms-group">
+          <input type="checkbox" id="terms" required />
+          <label for="terms"
+            >I agree to the Intergalactic Terms of Service and accept all
+            responsibilities and privileges associated with being part of the
+            intergalactic community. I commit to adhering to all rules and
+            guidelines set forth by the Intergalactic Council.</label
+          >
+        </div>
+
+        <button type="submit" id="highContrastToggle" onclick="hom()">
+          Activate Warp Drive!
+        </button>
+      </form>
+    </div>
+
+    <script>
+      // Password Strength Checker
+      function checkPasswordStrength(password) {
+        let strength = 0;
+        if (password.length >= 8) strength++;
+        if (password.match(/[A-Z]/)) strength++;
+        if (password.match(/[0-9]/)) strength++;
+        if (password.match(/[^A-Za-z0-9]/)) strength++;
+
+        const strengthBar = document.getElementById("passwordStrength");
+        const colors = ["#ff0000", "#ff4500", "#ffd700", "#00ff00"];
+        strengthBar.style.width = `${strength * 25}%`;
+        strengthBar.style.backgroundColor = colors[strength - 1];
+      }
+
+      // Profile Picture Preview
+      document
+        .getElementById("avatar")
+        .addEventListener("change", function (e) {
+          const reader = new FileReader();
+          reader.onload = function () {
+            document.getElementById("profilePreview").src = reader.result;
+          };
+          reader.readAsDataURL(e.target.files[0]);
+        });
+
+      // High Contrast Toggle
+      document
+        .getElementById("highContrastToggle")
+        .addEventListener("click", function () {
+          document.body.classList.toggle("high-contrast");
+        });
+
+      // Form Validation
+      document
+        .getElementById("signupForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          // Add validation logic here
+          const password = document.getElementById("password").value;
+          const confirmPassword =
+            document.getElementById("confirmPassword").value;
+
+          if (password !== confirmPassword) {
+            alert("Launch codes do not match!");
+            return;
+          }
+
+          // Add more validations as needed
+
+          alert("Warp drive engaged! Account creation initiated!");
+        });
+
+      // Real-time Password Strength
+      document
+        .getElementById("password")
+        .addEventListener("input", function (e) {
+          checkPasswordStrength(e.target.value);
+        });
+
+        function createStars() {
+        const starsContainer = document.getElementById("stars");
+        for (let i = 200; i--; ) {
+          const star = document.createElement("div");
+          star.className = "star";
+          const size = Math.random() * 3 + "px";
+          star.style.width = size;
+          star.style.height = size;
+          star.style.top = Math.random() * 100 + "vh";
+          star.style.left = Math.random() * 100 + "vw";
+          star.style.animationDuration = Math.random() * 2 + 1 + "s";
+          starsContainer.appendChild(star);
+        }
+      }
+
+      
+
+      window.onload = createStars;
+
+      function createComet() {
+        const container = document.body; // Or any existing div
+        const comet = document.createElement("div");
+        comet.className = "comet";
+
+        // Random start position
+        comet.style.left = Math.random() * 100 + "%";
+        comet.style.top = Math.random() * 100 + "%";
+
+        // Random animation duration
+        comet.style.animationDuration = Math.random() * 2 + 3 + "s";
+
+        container.appendChild(comet);
+
+        // Remove comet after animation
+        setTimeout(() => {
+          comet.remove();
+        }, 3000);
+      }
+
+      // Create comets periodically
+      setInterval(createComet, 5000);
+
+      // Initial comet
+      setTimeout(createComet, 1000);
+
+      function hom(){
+        window.location.href="index7.html";
+      }
+        
+
+
+        
+    </script>
+  </body>
+</html>

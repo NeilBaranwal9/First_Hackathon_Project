@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Space Discord</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+      }
+
+      * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+      :root {
+        --space-black: #0b0f17;
+        --nebula-purple: #2a1a55;
+        --star-blue: #4a90e2;
+        --planet-orange: #ff6b35;
+        --text-primary: #ffffff;
+      }
+
+    
+  
+
+      body {
+        background-color: var(--space-black);
+        color: var(--text-primary);
+        display: flex;
+        height: 100vh;
+        background-image: url("WhatsApp\ Image\ 2025-02-15\ at\ 11.05.47.jpeg");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center;
+        background-size: cover;
+
+        .control-panel {
+        position: fixed;
+        top: 3px;
+        left: 60%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 10px;
+        padding: 15px;
+        
+        border-radius: 20px;
+        
+        z-index: 100;
+      }
+
+      .control-btn {
+        padding: 10px 20px;
+        background: rgba(124, 77, 255, 0.3);
+        border: 1px solid #100431;
+        color: white;
+        border-radius: 15px;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+
+      .control-btn:hover {
+        background: rgba(124, 77, 255, 0.6);
+        transform: scale(1.1);
+      }
+        
+        
+        
+      }
+
+      /* Server List */
+      .server-list {
+        background-color: #1a1a2e;
+        padding: 15px 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .server-icon {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: var(--nebula-purple);
+        cursor: pointer;
+        transition: transform 0.3s, box-shadow 0.3s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+      }
+
+      .server-icon:hover {
+        transform: scale(1.1);
+        box-shadow: 0 0 15px var(--star-blue);
+      }
+
+      /* Channel List */
+      .channel-list {
+        background-color: #1a1a2e;
+        width: 240px;
+        padding: 20px;
+      }
+
+      .channel-header {
+        font-size: 1.2em;
+        margin-bottom: 20px;
+        color: var(--star-blue);
+      }
+
+      .channel-item {
+        padding: 8px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-bottom: 5px;
+        transition: background 0.3s;
+      }
+
+      .channel-item:hover {
+        background: var(--nebula-purple);
+      }
+
+      /* Main Chat Area */
+      .main-chat {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        
+        
+      }
+
+      .chat-header {
+        padding: 20px;
+        border-bottom: 2px solid var(--nebula-purple);
+        font-size: 1.2em;
+      }
+
+      .bottom-left-image {
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        width: 280px; /* Adjust size as needed */
+        height: auto;
+        
+     }
+
+      .chat-messages {
+        flex: 1;
+        padding: 20px;
+        overflow-y: auto;
+      }
+
+      .message {
+        display: flex;
+        margin-bottom: 20px;
+      }
+
+      .message-avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: var(--nebula-purple);
+        margin-right: 15px;
+      }
+
+      .message-content {
+        background: #1a1a2e;
+        padding: 15px;
+        border-radius: 10px;
+        border: 1px solid var(--star-blue);
+        max-width: 70%;
+      }
+
+      /* Members List */
+      .members-list {
+        width: 240px;
+        background-color: #1a1a2e;
+        padding: 20px;
+      }
+
+      /* Input Area */
+      .chat-input {
+        padding: 20px;
+        background: #1a1a2e;
+      }
+
+      .message-input {
+        width: 100%;
+        padding: 15px;
+        border-radius: 5px;
+        border: none;
+        background: var(--space-black);
+        color: white;
+        border: 1px solid var(--star-blue);
+      }
+
+      /* Animations */
+      @keyframes pulsate {
+        0% {
+          opacity: 0.8;
+        }
+        50% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0.8;
+        }
+      }
+
+      @keyframes launchRocket {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-500px); /* Moves the rocket up */
+    opacity: 0; /* Fades out */
+  }
+}
+
+.rocket-launch {
+  position: fixed;
+  bottom: 110px;
+  left: 10%;
+  width: 25px; /* Adjust as needed */
+  height: auto;
+  animation: launchRocket 5s ease-in-out forwards; /* Runs once */
+}
+
+    .pulsating {
+        animation: pulsate 2s infinite;
+      }
+    </style>
+  </head>
+  <body>
+
+    <div class="space" id="space"></div>
+    <div class="control-panel">
+      <button class="control-btn" id="homeBtn" onclick="nav2()" >Home</button>
+      <button class="control-btn" id="communityBtn" onclick="nav3()">Community</button>
+      <button class="control-btn" id="launchesBtn" onclick="nav4()">Launches</button>
+      <button class="control-btn" id="connectBtn" onclick="nav5()">Connect</button>
+      <button class="control-btn" id="MissionBtn" onclick="nav6()">Mission</button>
+    </div>
+
+    
+    <div class="server-list">
+      <div class="server-icon pulsating">🌌</div>
+      <div class="server-icon">🚀</div>
+      <div class="server-icon">🪐</div>
+    </div>
+
+    <div>
+        <img src="istockphoto-1442849073-612x612-removebg-preview.png" alt="Space Icon" class="bottom-left-image" />
+    </div>
+
+    <div>
+        <img src="PSLV.png" alt="Launching Rocket" class="rocket-launch" />
+    </div>
+
+    <div class="channel-list">
+      <div class="channel-header"><b>SPACE CHANNELS</b></div>
+      <div class="channel-item">#warp-drive-chat</div>
+      <div class="channel-item">#black-hole-debates</div>
+      <div class="channel-item">#alien-encounters</div>
+      <div class="channel-item">#cosmic-events</div>
+    </div>
+
+    <div class="main-chat">
+      <div class="chat-header">🚀 #intergalactic-general</div>
+
+      <div class="chat-messages" id="chatMessages">
+        <div class="message">
+          <div class="message-avatar"></div>
+          <div class="message-content">
+            <strong>SpaceExplorer42</strong>
+            <p>Anyone else seeing those neutron star readings?</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="chat-input">
+        <input
+          type="text"
+          class="message-input"
+          placeholder="Message #intergalactic-general"
+          id="messageInput"
+        />
+      </div>
+    </div>
+
+    <div class="members-list">
+      <div class="channel-header"><b>SPACE CREW</b></div>
+      <div class="channel-item">👨🚀 Captain Nova</div>
+      <div class="channel-item">👽 Xenobiologist</div>
+      <div class="channel-item">🛸 Dr. Quasar</div>
+    </div>
+
+    <script>
+
+      function nav2() {
+        window.location.href="index7.html";
+      }
+      function nav3() {
+        window.location.href="index2.html";
+      }
+      function nav4() {
+        window.location.href="index6.html";
+      }
+      function nav5() {
+        window.location.href="indx1.html";
+      }
+      function nav6() {
+        window.location.href="index5.html";
+      }
+      const messageInput = document.getElementById("messageInput");
+      const chatMessages = document.getElementById("chatMessages");
+
+      messageInput.addEventListener("keypress", function (e) {
+        if (e.key === "Enter" && this.value.trim()) {
+          const newMessage = document.createElement("div");
+          newMessage.className = "message";
+          newMessage.innerHTML = `
+                    <div class="message-avatar"></div>
+                    <div class="message-content">
+                        <strong>User</strong>
+                        <p>${this.value}</p>
+                        <small>${new Date().toLocaleTimeString()}</small>
+                    </div>
+                `;
+          chatMessages.appendChild(newMessage);
+          this.value = "";
+          chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+      });
+
+      // Add some initial space-themed messages
+      const spaceMessages = [
+        "Engaging hyperdrive in 3... 2... 1...",
+        "Detecting unusual quantum fluctuations in sector 9",
+        "New exoplanet discovered in Andromeda system!",
+        "Shields at 98% - minor meteor impacts detected",
+      ];
+
+      spaceMessages.forEach((msg) => {
+        const messageElement = document.createElement("div");
+        messageElement.className = "message";
+        messageElement.innerHTML = `
+                <div class="message-avatar"></div>
+                <div class="message-content">
+                    <strong>Ship Computer</strong>
+                    <p>${msg}</p>
+                    <small>${new Date().toLocaleTimeString()}</small>
+                </div>
+            `;
+        chatMessages.appendChild(messageElement);
+      });
+    </script>
+  </body>
+</html>
